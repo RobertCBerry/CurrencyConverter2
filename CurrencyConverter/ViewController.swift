@@ -66,7 +66,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         poundLabel.text = "0.00"
         yenLabel.text = "0.00"
         euroLabel.text = "0.00"
-        
     }
     
     // Called when 'return' key is pressed.
