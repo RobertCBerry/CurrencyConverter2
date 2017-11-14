@@ -13,6 +13,7 @@
 		D26C98DE1FBA440B004DEAFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D26C98DD1FBA440B004DEAFD /* Assets.xcassets */; };
 		D26C98E11FBA440B004DEAFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D26C98DF1FBA440B004DEAFD /* LaunchScreen.storyboard */; };
 		D26C98EC1FBA440B004DEAFD /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C98EB1FBA440B004DEAFD /* CurrencyConverterTests.swift */; };
+		D26C98F71FBA4A2F004DEAFD /* pound-yen-euro-dollar.png in Resources */ = {isa = PBXBuildFile; fileRef = D26C98F61FBA4A2F004DEAFD /* pound-yen-euro-dollar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		D26C98E71FBA440B004DEAFD /* CurrencyConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D26C98EB1FBA440B004DEAFD /* CurrencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterTests.swift; sourceTree = "<group>"; };
 		D26C98ED1FBA440B004DEAFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D26C98F61FBA4A2F004DEAFD /* pound-yen-euro-dollar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pound-yen-euro-dollar.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				D26C98DA1FBA440B004DEAFD /* Main.storyboard */,
 				D26C98DD1FBA440B004DEAFD /* Assets.xcassets */,
 				D26C98DF1FBA440B004DEAFD /* LaunchScreen.storyboard */,
+				D26C98F61FBA4A2F004DEAFD /* pound-yen-euro-dollar.png */,
 				D26C98E21FBA440B004DEAFD /* Info.plist */,
 			);
 			path = CurrencyConverter;
@@ -181,6 +184,7 @@
 			files = (
 				D26C98E11FBA440B004DEAFD /* LaunchScreen.storyboard in Resources */,
 				D26C98DE1FBA440B004DEAFD /* Assets.xcassets in Resources */,
+				D26C98F71FBA4A2F004DEAFD /* pound-yen-euro-dollar.png in Resources */,
 				D26C98DC1FBA440B004DEAFD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
