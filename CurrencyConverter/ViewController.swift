@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Foundation
+import Alamofire
+import SwiftyJSON 
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    
+    // MARK: Properties
     
     // Labels that display currency value.
     
@@ -20,14 +25,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var inputTextField: UITextField!
     
-    // Constants & Variables
-    
-    let poundRate = 0.69
-    let yenRate = 113.94
-    let euroRate = 0.89
-    
     var dollarAmount = 0.0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // Button that will convert currencies at exchange rates that have been programatically set.
+    // Button that will convert currencies at exchange rate that is updated by Open Exchange Rates.
     
     @IBAction func convertCurrency(_ sender: UIButton) {
         
@@ -50,12 +49,57 @@ class ViewController: UIViewController, UITextFieldDelegate {
             dollarAmount = amount
         }
         
-        poundLabel.text = "\(dollarAmount * poundRate)"
-        yenLabel.text = "\(dollarAmount * yenRate)"
-        euroLabel.text = "\(dollarAmount * euroRate)"
-        dollarAmount = 0.0
+        guard let url = URL(string: "https://openexchangerates.org/api/latest.json?app_id=ba4ddd56148446029b751c93feb50524") else { return }
+        
+        Alamofire.request(url)
+            .validate()
+            .responseJSON { response in
+                
+                if response.result.isSuccess {
+                    
+                    if let currencyJSON = response.result.value {
+                        
+                        let parsedData = JSON(currencyJSON)
+                        
+                        if let yen = parsedData["rates", "JPY"].double {
+                            
+                            let yenConversion = self.dollarAmount * yen
+                            
+                            // ".2f" means that only two numbers will be displayed after the decimal point.
+                            
+                            self.yenLabel.text = String(format: "¥%.2f", yenConversion)
+                            
+                        }
+                        
+                        if let pound = parsedData["rates", "GBP"].double {
+                            
+                            let poundConversion = self.dollarAmount * pound
+                            
+                            // ".2f" means that only two numbers will be displayed after the decimal point.
+                            
+                            self.poundLabel.text = String(format: "£%.2f", poundConversion)
+                            
+                        }
+                        
+                        if  let euro = parsedData["rates", "EUR"].double {
+                            
+                            let euroConversion = self.dollarAmount * euro
+                            
+                            // ".2f" means that only two numbers will be displayed after the decimal point.
+                            
+                            self.euroLabel.text = String(format: "€%.2f", euroConversion)
+                            
+                        }
+                        
+                    }
+                    
+                } else {
+                    
+                    print(response.result.error.debugDescription)
+                }
+        }
     }
-    
+ 
     // Button that will clear text field and currency amounts when tapped.
     
     @IBAction func clearTextField(_ sender: UIButton) {
